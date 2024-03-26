@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include <QPushButton>
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QGraphicsPixmapItem>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -30,10 +33,32 @@ private slots:
 
     void deselectCharacterButton();
 
+    void keyReleaseEvent(QKeyEvent *event);
+    void updatePlayerPosition();
+    void updateGame();
+
 private:
     Ui::MainWindow *ui;
     QPushButton *selectedCharacterButton;
     const QString SELECTED_STYLE = "border: 2px solid rgb(239, 228, 176);border-radius: 7px;";
+    QGraphicsScene *scene;
+    QGraphicsView *view;
+    QGraphicsPixmapItem *player;
+    QPixmap playerSprite;
+    QPointF playerPosition;
+
+    bool moveLeft = false;
+    bool moveRight = false;
+    bool moveUp = false;
+    bool moveDown = false;
+
+    QTimer *timer;
+
+
+protected:
+    void keyPressEvent(QKeyEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
 
 };
+
 #endif // MAINWINDOW_H
