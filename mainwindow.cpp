@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->stacked_pages->setCurrentIndex(0);
 }
 
 MainWindow::~MainWindow()
@@ -37,3 +38,5 @@ void MainWindow::on_quit_settings_button_clicked()
 {
     ui->stacked_pages->setCurrentIndex(0);
 }
+
+

@@ -2,5 +2,10 @@
     <qresource prefix="/">
         <file>static/bg_pic_main.png</file>
         <file>static/bg_pic_settings.png</file>
+        <file>static/characters/bazooka.png</file>
+        <file>static/characters/cowboy.png</file>
+        <file>static/characters/infantry.png</file>
+        <file>static/characters/shotgun.png</file>
+        <file>static/characters/steve.png</file>
     </qresource>
 </RCC>

@@ -33,7 +33,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page_main">
      <property name="styleSheet">
@@ -177,6 +177,174 @@ QPushButton:hover {
       <property name="text">
        <string>Quit</string>
       </property>
+     </widget>
+     <widget class="QFrame" name="frame">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>140</y>
+        <width>301</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QScrollArea" name="scrollArea">
+         <property name="styleSheet">
+          <string notr="true">QScrollArea {
+    border: 2px solid rgb(120, 84, 27); /* Marron foncé */
+    border-radius: 10px; /* Coins arrondis */
+}
+
+QScrollBar:horizontal {
+    background-color: rgb(170, 134, 77);
+    border-radius: 7px; /* Coins arrondis */
+}
+
+QScrollBar::handle:horizontal {
+    background-color: rgb(130, 94, 37); /* Marron moyen */
+    min-height: 20px; /* Hauteur minimale du bouton */
+    border-radius: 7px; /* Coins arrondis */
+}
+
+/* Bouton de défilement lorsque survolé */
+QScrollBar::handle:horizontal:hover {
+    background-color: rgb(140, 104, 47);; /* Marron foncé */
+}
+
+/* Bouton de défilement lorsque pressé */
+QScrollBar::handle:horizontal:pressed {
+    background-color: rgb(130, 94, 37); /* Marron moyen */
+}
+</string>
+         </property>
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOn</enum>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>-164</x>
+            <y>0</y>
+            <width>441</width>
+            <height>93</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QWidget {
+	background-color: rgb(90, 54, 7);
+}
+</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="spacing">
+            <number>17</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="cowboy_6">
+             <property name="minimumSize">
+              <size>
+               <width>71</width>
+               <height>71</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-image: url(:/static/characters/cowboy.png);
+background-repeat: no-repeat;</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="cowboy_5">
+             <property name="minimumSize">
+              <size>
+               <width>71</width>
+               <height>71</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-image: url(:/static/characters/steve.png);
+background-repeat: no-repeat;</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="cowboy_4">
+             <property name="minimumSize">
+              <size>
+               <width>71</width>
+               <height>71</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-image: url(:/static/characters/shotgun.png);
+background-repeat: no-repeat;</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="cowboy_3">
+             <property name="minimumSize">
+              <size>
+               <width>71</width>
+               <height>71</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-image: url(:/static/characters/bazooka.png);
+background-repeat: no-repeat;</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="scaledContents">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="cowboy_2">
+             <property name="minimumSize">
+              <size>
+               <width>71</width>
+               <height>71</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-image: url(:/static/characters/infantry.png);
+background-repeat: no-repeat;</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>
