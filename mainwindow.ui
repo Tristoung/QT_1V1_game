@@ -222,6 +222,7 @@ QScrollBar::handle:horizontal:hover {
 QScrollBar::handle:horizontal:pressed {
     background-color: rgb(130, 94, 37); /* Marron moyen */
 }
+
 </string>
          </property>
          <property name="verticalScrollBarPolicy">
@@ -236,7 +237,7 @@ QScrollBar::handle:horizontal:pressed {
          <widget class="QWidget" name="scrollAreaWidgetContents">
           <property name="geometry">
            <rect>
-            <x>-164</x>
+            <x>0</x>
             <y>0</y>
             <width>441</width>
             <height>93</height>
@@ -246,6 +247,11 @@ QScrollBar::handle:horizontal:pressed {
            <string notr="true">QWidget {
 	background-color: rgb(90, 54, 7);
 }
+
+QPushButton {
+	border: 3px solid transparent;
+	background-repeat: no-repeat;
+}
 </string>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout">
@@ -253,16 +259,24 @@ QScrollBar::handle:horizontal:pressed {
             <number>17</number>
            </property>
            <item>
-            <widget class="QLabel" name="cowboy_6">
+            <widget class="QPushButton" name="cowboy">
              <property name="minimumSize">
               <size>
                <width>71</width>
                <height>71</height>
               </size>
              </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
              <property name="styleSheet">
-              <string notr="true">background-image: url(:/static/characters/cowboy.png);
-background-repeat: no-repeat;</string>
+              <string notr="true">border: none;
+padding: 0;
+background: transparent;
+background-image: url(:/static/characters/cowboy.png);
+background-repeat: no-repeat;
+
+</string>
              </property>
              <property name="text">
               <string/>
@@ -270,16 +284,24 @@ background-repeat: no-repeat;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="cowboy_5">
+            <widget class="QPushButton" name="steve">
              <property name="minimumSize">
               <size>
                <width>71</width>
                <height>71</height>
               </size>
              </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
              <property name="styleSheet">
-              <string notr="true">background-image: url(:/static/characters/steve.png);
-background-repeat: no-repeat;</string>
+              <string notr="true">border: none;
+padding: 0;
+background: transparent;
+background-image: url(:/static/characters/steve.png);
+background-repeat: no-repeat;
+
+</string>
              </property>
              <property name="text">
               <string/>
@@ -287,16 +309,24 @@ background-repeat: no-repeat;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="cowboy_4">
+            <widget class="QPushButton" name="shotgun">
              <property name="minimumSize">
               <size>
                <width>71</width>
                <height>71</height>
               </size>
              </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
              <property name="styleSheet">
-              <string notr="true">background-image: url(:/static/characters/shotgun.png);
-background-repeat: no-repeat;</string>
+              <string notr="true">border: none;
+padding: 0;
+background: transparent;
+background-image: url(:/static/characters/shotgun.png);
+background-repeat: no-repeat;
+
+</string>
              </property>
              <property name="text">
               <string/>
@@ -304,36 +334,49 @@ background-repeat: no-repeat;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="cowboy_3">
+            <widget class="QPushButton" name="bazooka">
              <property name="minimumSize">
               <size>
                <width>71</width>
                <height>71</height>
               </size>
              </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
              <property name="styleSheet">
-              <string notr="true">background-image: url(:/static/characters/bazooka.png);
-background-repeat: no-repeat;</string>
+              <string notr="true">border: none;
+padding: 0;
+background: transparent;
+background-image: url(:/static/characters/bazooka.png);
+background-repeat: no-repeat;
+
+</string>
              </property>
              <property name="text">
               <string/>
              </property>
-             <property name="scaledContents">
-              <bool>false</bool>
-             </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="cowboy_2">
+            <widget class="QPushButton" name="infantry">
              <property name="minimumSize">
               <size>
                <width>71</width>
                <height>71</height>
               </size>
              </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
              <property name="styleSheet">
-              <string notr="true">background-image: url(:/static/characters/infantry.png);
-background-repeat: no-repeat;</string>
+              <string notr="true">border: none;
+padding: 0;
+background: transparent;
+background-image: url(:/static/characters/infantry.png);
+background-repeat: no-repeat;
+
+</string>
              </property>
              <property name="text">
               <string/>

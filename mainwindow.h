@@ -2,8 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QCoreApplication>
-#include <QMessageBox>
+#include <QPushButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,7 +22,18 @@ private slots:
     void on_exit_button_clicked();
     void on_quit_settings_button_clicked();
 
+    void on_cowboy_clicked();
+    void on_infantry_clicked();
+    void on_steve_clicked();
+    void on_shotgun_clicked();
+    void on_bazooka_clicked();
+
+    void deselectCharacterButton();
+
 private:
     Ui::MainWindow *ui;
+    QPushButton *selectedCharacterButton;
+    const QString SELECTED_STYLE = "border: 2px solid rgb(239, 228, 176);border-radius: 7px;";
+
 };
 #endif // MAINWINDOW_H
