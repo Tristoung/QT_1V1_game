@@ -1,4 +1,4 @@
-// Dans MainWindow.cpp
+
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 #include <QLabel>
@@ -37,7 +37,7 @@ void MainWindow::on_exit_button_clicked()
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Confirm", "Are you sure that you want to exit ?", QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::Yes) {
-        QCoreApplication::quit(); // Quitter l'application si l'utilisateur a cliqué sur "Oui"
+        QCoreApplication::quit();
     }
 }
 
@@ -59,7 +59,6 @@ void MainWindow::on_start_button_clicked()
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setCentralWidget(view);
 
-    // Charger l'image du sprite en fonction du personnage sélectionné
     if (selectedCharacterButton != nullptr) {
         if (selectedCharacterButton == ui->cowboy)
             playerSprite.load(":/static/characters/cowboy.png");
@@ -142,11 +141,23 @@ void MainWindow::deselectCharacterButton()
 
 void MainWindow::on_cowboy_clicked()
 {
+
+
     deselectCharacterButton();
     selectedCharacterButton = ui->cowboy;
     QString currentStyle = selectedCharacterButton->styleSheet();
     currentStyle += SELECTED_STYLE;
     selectedCharacterButton->setStyleSheet(currentStyle);
+
+    qDebug() << "Personnage sélectionné : Cowboy";
+
+    curSelectedChar = ui->img_curPlayer;
+    QString currentPlayerImgStyle = curSelectedChar->styleSheet();
+    currentPlayerImgStyle.remove("background-image: url(:/static/characters/"+selectedCharacterButton->objectName()+".png);");
+    currentPlayerImgStyle += "background-image: url(:/static/characters/cowboy.png);";
+    curSelectedChar->setStyleSheet(currentPlayerImgStyle);
+
+    ui->name_curPlayer->setText("Cowboy");
 }
 
 void MainWindow::on_infantry_clicked()
@@ -156,6 +167,16 @@ void MainWindow::on_infantry_clicked()
     QString currentStyle = selectedCharacterButton->styleSheet();
     currentStyle += SELECTED_STYLE;
     selectedCharacterButton->setStyleSheet(currentStyle);
+
+    qDebug() << "Personnage sélectionné : Infantry";
+
+    curSelectedChar = ui->img_curPlayer;
+    QString currentPlayerImgStyle = curSelectedChar->styleSheet();
+    currentPlayerImgStyle.remove("background-image: url(:/static/characters/"+selectedCharacterButton->objectName()+".png);");
+    currentPlayerImgStyle += "background-image: url(:/static/characters/infantry.png);";
+    curSelectedChar->setStyleSheet(currentPlayerImgStyle);
+
+    ui->name_curPlayer->setText("Infantry");
 }
 
 void MainWindow::on_shotgun_clicked()
@@ -165,6 +186,16 @@ void MainWindow::on_shotgun_clicked()
     QString currentStyle = selectedCharacterButton->styleSheet();
     currentStyle += SELECTED_STYLE;
     selectedCharacterButton->setStyleSheet(currentStyle);
+
+    qDebug() << "Personnage sélectionné : Shotgun";
+
+    curSelectedChar = ui->img_curPlayer;
+    QString currentPlayerImgStyle = curSelectedChar->styleSheet();
+    currentPlayerImgStyle.remove("background-image: url(:/static/characters/"+selectedCharacterButton->objectName()+".png);");
+    currentPlayerImgStyle += "background-image: url(:/static/characters/shotgun.png);";
+    curSelectedChar->setStyleSheet(currentPlayerImgStyle);
+
+    ui->name_curPlayer->setText("Shotgun");
 }
 
 void MainWindow::on_bazooka_clicked()
@@ -174,6 +205,17 @@ void MainWindow::on_bazooka_clicked()
     QString currentStyle = selectedCharacterButton->styleSheet();
     currentStyle += SELECTED_STYLE;
     selectedCharacterButton->setStyleSheet(currentStyle);
+
+    qDebug() << "Personnage sélectionné : Bazooka";
+
+    curSelectedChar = ui->img_curPlayer;
+    QString currentPlayerImgStyle = curSelectedChar->styleSheet();
+    currentPlayerImgStyle.remove("background-image: url(:/static/characters/"+selectedCharacterButton->objectName()+".png);");
+    currentPlayerImgStyle += "background-image: url(:/static/characters/bazooka.png);";
+    curSelectedChar->setStyleSheet(currentPlayerImgStyle);
+
+    ui->name_curPlayer->setText("Bazooka");
+
 }
 
 void MainWindow::on_steve_clicked()
@@ -183,18 +225,26 @@ void MainWindow::on_steve_clicked()
     QString currentStyle = selectedCharacterButton->styleSheet();
     currentStyle += SELECTED_STYLE;
     selectedCharacterButton->setStyleSheet(currentStyle);
+
+    qDebug() << "Personnage sélectionné : Steve";
+
+    curSelectedChar = ui->img_curPlayer;
+    QString currentPlayerImgStyle = curSelectedChar->styleSheet();
+    currentPlayerImgStyle.remove("background-image: url(:/static/characters/"+selectedCharacterButton->objectName()+".png);");
+    currentPlayerImgStyle += "background-image: url(:/static/characters/steve.png);";
+    curSelectedChar->setStyleSheet(currentPlayerImgStyle);
+
+    ui->name_curPlayer->setText("Steve");
+
 }
 
 // Détection de la position de la souris
 
 void MainWindow::mouseMoveEvent(QMouseEvent *event)
 {
-    // Récupérer les coordonnées de la souris
     QPointF mousePos = event->pos();
 
-    // Faites ce que vous voulez avec les coordonnées de la souris ici
-    qDebug() << "Mouse position: " << mousePos;
+    // qDebug() << "Mouse position: " << mousePos;
 
-    // Passer l'événement à la classe de base
     QMainWindow::mouseMoveEvent(event);
 }

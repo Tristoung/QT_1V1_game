@@ -130,6 +130,78 @@ QPushButton:hover {
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="widget_curPlayer" native="true">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>440</y>
+        <width>211</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget {
+	color: rgb(239, 228, 176);
+	background-color: rgb(201, 129, 83);
+	border-radius: 10px;
+}</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="title">
+         <property name="font">
+          <font>
+           <family>Bauhaus 93</family>
+           <pointsize>16</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Current Character :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="img_curPlayer">
+           <property name="minimumSize">
+            <size>
+             <width>71</width>
+             <height>71</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border: none;
+padding: 0;
+background: transparent;
+background-image: url(:/static/characters/cowboy.png);
+background-repeat: no-repeat;</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="name_curPlayer">
+           <property name="font">
+            <font>
+             <family>Bauhaus 93</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
     </widget>
     <widget class="QWidget" name="page_start"/>
     <widget class="QWidget" name="page_settings">

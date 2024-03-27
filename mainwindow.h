@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QPushButton>
+#include <QLabel>
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QGraphicsPixmapItem>
@@ -40,7 +41,10 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QPushButton *selectedCharacterButton;
+    QLabel *curSelectedChar;
+    QLabel *curSelectedName;
     const QString SELECTED_STYLE = "border: 2px solid rgb(239, 228, 176);border-radius: 7px;";
+
     QGraphicsScene *scene;
     QGraphicsView *view;
     QGraphicsPixmapItem *player;
@@ -61,4 +65,4 @@ protected:
 
 };
 
-#endif // MAINWINDOW_H
+#endif
