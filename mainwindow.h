@@ -7,10 +7,14 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QGraphicsPixmapItem>
+#include <QMediaPlayer>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
+class QMediaPlayer;
 
 class MainWindow : public QMainWindow
 {
@@ -38,11 +42,25 @@ private slots:
     void updatePlayerPosition();
     void updateGame();
 
+    void on_music1_clicked();
+    void on_music2_clicked();
+    void on_music3_clicked();
+    void on_music4_clicked();
+    void on_music5_clicked();
+    void on_music6_clicked();
+    void on_sound_button_clicked();
+
+    void playMusic();
+    void pauseMusic();
+    void stopMusic();
+    void toggleSound();
+
 private:
     Ui::MainWindow *ui;
     QPushButton *selectedCharacterButton;
     QLabel *curSelectedChar;
     QLabel *curSelectedName;
+    QLabel *playerWidget;
     const QString SELECTED_STYLE = "border: 2px solid rgb(239, 228, 176);border-radius: 7px;";
 
     QGraphicsScene *scene;
@@ -56,7 +74,12 @@ private:
     bool moveUp = false;
     bool moveDown = false;
 
+    bool isSoundOn = true;
+    bool isSoundOff = false;
+    QMediaPlayer *mediaPlayer;
+
     QTimer *timer;
+    void returnToPreviousScreen();
 
 
 protected:

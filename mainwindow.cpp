@@ -8,7 +8,6 @@
 #include <QKeyEvent>
 #include <QTimer>
 
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -18,6 +17,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->stacked_pages->setCurrentIndex(0);
 
     on_cowboy_clicked();
+    playMusic();
+    toggleSound();
 }
 
 MainWindow::~MainWindow()
@@ -51,8 +52,17 @@ void MainWindow::on_quit_settings_button_clicked()
 
 void MainWindow::on_start_button_clicked()
 {
+    ui->stacked_pages->setCurrentIndex(1);
+
     // Initialiser la scène et la vue
     scene = new QGraphicsScene(this);
+
+    QPixmap backgroundImage(":/static/bg_pic_fight");
+
+    QBrush backgroundBrush(backgroundImage);
+    backgroundBrush.setTransform(QTransform().translate(-303, -80)); // Ajustez x et y selon vos besoins
+    scene->setBackgroundBrush(backgroundBrush);
+
     view = new QGraphicsView(scene);
     view->setFixedSize(1075, 630);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -77,6 +87,13 @@ void MainWindow::on_start_button_clicked()
         player->setPos(playerPosition);
     }
 
+    // Bouton retour au menu
+    QPushButton *returnButton = new QPushButton("Return");
+    returnButton->setGeometry(QRect(20, 20, 100, 30));
+    scene->addWidget(returnButton);
+    connect(returnButton, &QPushButton::clicked, this, &MainWindow::returnToPreviousScreen);
+
+    // Boucle pour update le personnage
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MainWindow::updatePlayerPosition);
     timer->start(20);
@@ -149,7 +166,7 @@ void MainWindow::on_cowboy_clicked()
     currentStyle += SELECTED_STYLE;
     selectedCharacterButton->setStyleSheet(currentStyle);
 
-    qDebug() << "Personnage sélectionné : Cowboy";
+    // qDebug() << "Personnage sélectionné : Cowboy";
 
     curSelectedChar = ui->img_curPlayer;
     QString currentPlayerImgStyle = curSelectedChar->styleSheet();
@@ -168,7 +185,7 @@ void MainWindow::on_infantry_clicked()
     currentStyle += SELECTED_STYLE;
     selectedCharacterButton->setStyleSheet(currentStyle);
 
-    qDebug() << "Personnage sélectionné : Infantry";
+    // qDebug() << "Personnage sélectionné : Infantry";
 
     curSelectedChar = ui->img_curPlayer;
     QString currentPlayerImgStyle = curSelectedChar->styleSheet();
@@ -187,7 +204,7 @@ void MainWindow::on_shotgun_clicked()
     currentStyle += SELECTED_STYLE;
     selectedCharacterButton->setStyleSheet(currentStyle);
 
-    qDebug() << "Personnage sélectionné : Shotgun";
+    // qDebug() << "Personnage sélectionné : Shotgun";
 
     curSelectedChar = ui->img_curPlayer;
     QString currentPlayerImgStyle = curSelectedChar->styleSheet();
@@ -206,7 +223,7 @@ void MainWindow::on_bazooka_clicked()
     currentStyle += SELECTED_STYLE;
     selectedCharacterButton->setStyleSheet(currentStyle);
 
-    qDebug() << "Personnage sélectionné : Bazooka";
+    // qDebug() << "Personnage sélectionné : Bazooka";
 
     curSelectedChar = ui->img_curPlayer;
     QString currentPlayerImgStyle = curSelectedChar->styleSheet();
@@ -226,7 +243,7 @@ void MainWindow::on_steve_clicked()
     currentStyle += SELECTED_STYLE;
     selectedCharacterButton->setStyleSheet(currentStyle);
 
-    qDebug() << "Personnage sélectionné : Steve";
+    // qDebug() << "Personnage sélectionné : Steve";
 
     curSelectedChar = ui->img_curPlayer;
     QString currentPlayerImgStyle = curSelectedChar->styleSheet();
@@ -248,3 +265,93 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 
     QMainWindow::mouseMoveEvent(event);
 }
+
+void MainWindow::returnToPreviousScreen()
+{
+    // Arrêtez le timer s'il est en cours
+    // if (timer != nullptr) {
+    //     timer->stop();
+    //     delete timer;
+    //     timer = nullptr;
+    // }
+
+    // // Supprimez la vue et la scène
+    // if (view != nullptr) {
+    //     delete view;
+    //     view = nullptr;
+    // }
+    // if (scene != nullptr) {
+    //     delete scene;
+    //     scene = nullptr;
+    // }
+
+    // Revenir à l'écran précédent
+    // ui->stacked_pages->setCurrentIndex(0);
+}
+
+// Sélection musique
+
+QString selectedMusicPath = ":/static/music/music_test.wav";
+
+void MainWindow::on_music1_clicked() {
+    selectedMusicPath = ":/static/music/music1.mp3";
+    playMusic();
+}
+void MainWindow::on_music2_clicked() {
+    selectedMusicPath = ":/static/music/music2.mp3";
+    playMusic();
+}
+void MainWindow::on_music3_clicked() {
+    selectedMusicPath = ":/static/music/music3.mp3";
+    playMusic();
+}
+void MainWindow::on_music4_clicked() {
+    selectedMusicPath = ":/static/music/music4.mp3";
+    playMusic();
+}
+void MainWindow::on_music5_clicked() {
+    selectedMusicPath = ":/static/music/music5.mp3";
+    playMusic();
+}
+void MainWindow::on_music6_clicked() {
+    selectedMusicPath = ":/static/music/music6.mp3";
+    playMusic();
+}
+
+void MainWindow::playMusic() {
+    qDebug("Play %s", qPrintable(selectedMusicPath));
+
+    mediaPlayer = new QMediaPlayer;
+    mediaPlayer->setSource(QUrl(selectedMusicPath));
+    mediaPlayer->play();
+
+    qDebug() << "Music Player state : " << mediaPlayer->playbackState();
+}
+
+void MainWindow::pauseMusic() {
+    if (mediaPlayer)
+        mediaPlayer->pause();
+}
+
+void MainWindow::stopMusic() {
+    if (mediaPlayer)
+        mediaPlayer->stop();
+}
+
+void MainWindow::toggleSound() {
+    if (isSoundOn) {
+        isSoundOn = false;
+        ui->sound_button->setStyleSheet("border: none;padding: 0; background: transparent; background-image: url(:/static/icon/sound_off.png); background-repeat: no-repeat;");
+    } else {
+        isSoundOn = true;
+        ui->sound_button->setStyleSheet("border: none;padding: 0; background: transparent; background-image: url(:/static/icon/sound_on.png); background-repeat: no-repeat;");
+    }
+}
+
+void MainWindow::on_sound_button_clicked() {
+    toggleSound();
+}
+
+
+
+
