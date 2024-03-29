@@ -24,3 +24,5 @@ Compile project :
 
 Execute project :
   ./1v1
+
+Done !
