@@ -33,7 +33,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page_main">
      <property name="styleSheet">
@@ -609,7 +609,7 @@ QScrollBar::handle:horizontal:pressed {
          <widget class="QWidget" name="scrollAreaMusicContents">
           <property name="geometry">
            <rect>
-            <x>0</x>
+            <x>-222</x>
             <y>0</y>
             <width>499</width>
             <height>93</height>
@@ -730,6 +730,80 @@ QPushButton:hover {
       </property>
       <property name="text">
        <string>Music Selection</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QSlider" name="volume_slider">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>450</y>
+        <width>281</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSlider {
+    background-color: rgb(58, 42, 13); /* Couleur de fond */
+    border-radius: 10px; /* Coins arrondis */
+}
+
+QSlider::groove:horizontal {
+    border: none; /* Pas de bordure sur la rainure */
+    height: 8px; /* Hauteur de la rainure */
+    background: rgb(170, 134, 77); /* Couleur de la rainure */
+    margin: 2px 0; /* Marge supérieure et inférieure */
+}
+
+QSlider::handle:horizontal {
+    background: rgb(130, 94, 37); /* Couleur du bouton */
+    border: 2px solid rgb(120, 84, 27); /* Bordure du bouton */
+    width: 20px; /* Largeur du bouton */
+    height: 20px; /* Hauteur du bouton */
+    margin: -6px 0; /* Marge supérieure et inférieure */
+    border-radius: 10px; /* Coins arrondis */
+}
+
+QSlider::handle:horizontal:hover {
+    background: rgb(140, 104, 47); /* Couleur du bouton au survol */
+}
+
+QSlider::handle:horizontal:pressed {
+    background: rgb(130, 94, 37); /* Couleur du bouton lorsque pressé */
+}
+</string>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>420</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Bauhaus 93</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+	color: rgb(116, 80, 24);
+	background-color: rgb(58, 42, 13);
+	border-radius: 11px;
+	border: 3px solid rgb(120, 84, 27);
+}</string>
+      </property>
+      <property name="text">
+       <string>Volume</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>

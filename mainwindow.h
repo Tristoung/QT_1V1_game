@@ -14,8 +14,6 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class QMediaPlayer;
-
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -55,6 +53,10 @@ private slots:
     void stopMusic();
     void toggleSound();
 
+    void onVolumeSliderChanged(int value);
+    void moveVolumeSlider(int value);
+
+
 private:
     Ui::MainWindow *ui;
     QPushButton *selectedCharacterButton;
@@ -77,6 +79,8 @@ private:
     bool isSoundOn = true;
     bool isSoundOff = false;
     QMediaPlayer *mediaPlayer;
+
+    int volume = 50;
 
     QTimer *timer;
     void returnToPreviousScreen();

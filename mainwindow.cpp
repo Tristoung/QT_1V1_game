@@ -8,6 +8,7 @@
 #include <QKeyEvent>
 #include <QTimer>
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -16,6 +17,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->stacked_pages->setCurrentIndex(0);
 
+    connect(ui->volume_slider, &QSlider::valueChanged, this, &MainWindow::onVolumeSliderChanged);
+
+    moveVolumeSlider(50);
     on_cowboy_clicked();
     playMusic();
     toggleSound();
@@ -319,31 +323,44 @@ void MainWindow::on_music6_clicked() {
 }
 
 void MainWindow::playMusic() {
-    qDebug("Play %s", qPrintable(selectedMusicPath));
+    mediaPlayer = new QMediaPlayer(this);
 
-    mediaPlayer = new QMediaPlayer;
-    mediaPlayer->setSource(QUrl(selectedMusicPath));
+    connect(mediaPlayer, &QMediaPlayer::mediaStatusChanged, this, [=](QMediaPlayer::MediaStatus status){
+        if (status == QMediaPlayer::EndOfMedia) {
+            mediaPlayer->setPosition(0);
+            mediaPlayer->play();
+        }
+    });
+
+    // mediaPlayer->setMedia(QUrl("qrc:/static/Music/Struggle_of_sadness.mp3"));
+    // mediaPlayer->setVolume(50);
     mediaPlayer->play();
 
     qDebug() << "Music Player state : " << mediaPlayer->playbackState();
 }
 
 void MainWindow::pauseMusic() {
-    if (mediaPlayer)
+    if (mediaPlayer) {
         mediaPlayer->pause();
+    }
 }
 
 void MainWindow::stopMusic() {
-    if (mediaPlayer)
+    if (mediaPlayer) {
         mediaPlayer->stop();
+    }
 }
 
 void MainWindow::toggleSound() {
     if (isSoundOn) {
         isSoundOn = false;
+        // mediaPlayer->setVolume(0);
+        moveVolumeSlider(0);
         ui->sound_button->setStyleSheet("border: none;padding: 0; background: transparent; background-image: url(:/static/icon/sound_off.png); background-repeat: no-repeat;");
     } else {
         isSoundOn = true;
+        // mediaPlayer->setVolume(volume);
+        moveVolumeSlider(volume);
         ui->sound_button->setStyleSheet("border: none;padding: 0; background: transparent; background-image: url(:/static/icon/sound_on.png); background-repeat: no-repeat;");
     }
 }
@@ -352,6 +369,19 @@ void MainWindow::on_sound_button_clicked() {
     toggleSound();
 }
 
+void MainWindow::onVolumeSliderChanged(int value) {
+    if (isSoundOn)
+        volume = value;
+    qDebug() << "Volume : " << volume;
+    // mediaPlayer->setVolume(volume);
+
+}
+void MainWindow::moveVolumeSlider(int value) {
+    int minValue = ui->volume_slider->minimum();
+    int maxValue = ui->volume_slider->maximum();
+    value = qBound(minValue, value, maxValue);
+    ui->volume_slider->setValue(value);
+}
 
 
 
