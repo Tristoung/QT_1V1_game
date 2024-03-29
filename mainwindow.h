@@ -81,6 +81,7 @@ private:
     QMediaPlayer *mediaPlayer;
 
     int volume = 50;
+    int volumeBeforeMute = 50;
 
     QTimer *timer;
     void returnToPreviousScreen();

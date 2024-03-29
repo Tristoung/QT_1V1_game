@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
     moveVolumeSlider(50);
     on_cowboy_clicked();
     playMusic();
-    toggleSound();
+    // toggleSound();
 }
 
 MainWindow::~MainWindow()
@@ -353,12 +353,15 @@ void MainWindow::stopMusic() {
 
 void MainWindow::toggleSound() {
     if (isSoundOn) {
+        volumeBeforeMute = volume;
+        volume = 0;
         isSoundOn = false;
-        // mediaPlayer->setVolume(0);
-        moveVolumeSlider(0);
+        // mediaPlayer->setVolume(volume);
+        moveVolumeSlider(volume);
         ui->sound_button->setStyleSheet("border: none;padding: 0; background: transparent; background-image: url(:/static/icon/sound_off.png); background-repeat: no-repeat;");
     } else {
         isSoundOn = true;
+        volume = volumeBeforeMute;
         // mediaPlayer->setVolume(volume);
         moveVolumeSlider(volume);
         ui->sound_button->setStyleSheet("border: none;padding: 0; background: transparent; background-image: url(:/static/icon/sound_on.png); background-repeat: no-repeat;");
@@ -370,8 +373,7 @@ void MainWindow::on_sound_button_clicked() {
 }
 
 void MainWindow::onVolumeSliderChanged(int value) {
-    if (isSoundOn)
-        volume = value;
+    volume = value;
     qDebug() << "Volume : " << volume;
     // mediaPlayer->setVolume(volume);
 

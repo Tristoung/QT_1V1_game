@@ -33,7 +33,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page_main">
      <property name="styleSheet">
@@ -205,8 +205,8 @@ background-repeat: no-repeat;</string>
      <widget class="QPushButton" name="sound_button">
       <property name="geometry">
        <rect>
-        <x>1000</x>
-        <y>10</y>
+        <x>960</x>
+        <y>40</y>
         <width>60</width>
         <height>60</height>
        </rect>
@@ -609,7 +609,7 @@ QScrollBar::handle:horizontal:pressed {
          <widget class="QWidget" name="scrollAreaMusicContents">
           <property name="geometry">
            <rect>
-            <x>-222</x>
+            <x>0</x>
             <y>0</y>
             <width>499</width>
             <height>93</height>
