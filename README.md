@@ -5,6 +5,8 @@ Installation instruction for Debian 12 :
 Install qmake :
   sudo apt update
   sudo apt install qt5-qmake
+Install libraries :
+  sudo apt install libqt5core5a libqt5gui5 libqt5widgets5 qtmultimedia5-dev
 
 Install the project :
   git clone https://github.com/Tristoung/QT_1V1_game.git
