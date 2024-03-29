@@ -1,4 +1,4 @@
-QT += widgets multimedia
+QT += core gui widgets multimedia
 
 TARGET = 1v1
 TEMPLATE = app

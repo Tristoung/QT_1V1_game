@@ -336,7 +336,7 @@ void MainWindow::playMusic() {
     // mediaPlayer->setVolume(50);
     mediaPlayer->play();
 
-    qDebug() << "Music Player state : " << mediaPlayer->playbackState();
+    // qDebug() << "Music Player state : " << mediaPlayer->playbackState();
 }
 
 void MainWindow::pauseMusic() {
