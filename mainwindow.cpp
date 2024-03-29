@@ -1,6 +1,6 @@
 
-#include "MainWindow.h"
-#include "ui_MainWindow.h"
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 #include <QLabel>
 #include <QMessageBox>
 #include <QMouseEvent>
